@@ -77,6 +77,7 @@ return {
             compilationDatabasePath = './build',
             handlers = {
                 function(server_name) -- default handler (optional)
+                    require("mason-nvim-lint.install").try_install("cpplint")
 
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
@@ -156,7 +157,7 @@ return {
         })
 
         vim.diagnostic.config({
-            -- update_in_insert = true,
+            update_in_insert = false,
             float = {
                 focusable = false,
                 style = "minimal",
